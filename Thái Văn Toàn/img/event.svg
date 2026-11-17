@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Hiệu ứng đổ bóng mềm mại cho khối -->
+    <filter id="dropShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#0a2540" flood-opacity="0.22" />
+    </filter>
+
+    <!-- Hiệu ứng bóng đổ bên trong mặt trắng -->
+    <filter id="innerShadow">
+      <feOffset dx="0" dy="3" />
+      <feGaussianBlur stdDeviation="3" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="#000000" flood-opacity="0.18" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+    </filter>
+
+    <!-- Gradient kim loại xanh dương đậm -->
+    <linearGradient id="blueFrameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e6091" />
+      <stop offset="50%" stop-color="#114b7a" />
+      <stop offset="100%" stop-color="#092c4c" />
+    </linearGradient>
+
+    <!-- Gradient thanh tiêu đề trên cùng -->
+    <linearGradient id="topBarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#165280" />
+      <stop offset="100%" stop-color="#0b3152" />
+    </linearGradient>
+
+    <!-- Gradient chữ CLB đỏ ruby nổi bật -->
+    <linearGradient id="rubyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d90429" />
+      <stop offset="100%" stop-color="#8d0801" />
+    </linearGradient>
+  </defs>
+
+  <!-- Khung vuông bo góc bên ngoài -->
+  <rect x="50" y="50" width="300" height="300" rx="38" ry="38" fill="url(#blueFrameGrad)" filter="url(#dropShadow)" />
+
+  <!-- Đường viền sáng tạo khối 3D cho khung -->
+  <rect x="52" y="52" width="296" height="296" rx="36" ry="36" fill="none" stroke="#4ea8de" stroke-width="2" opacity="0.45" />
+
+  <!-- Mặt nền trắng bên trong -->
+  <rect x="68" y="118" width="264" height="214" rx="22" ry="22" fill="#f8fafc" filter="url(#innerShadow)" />
+
+  <!-- Thanh tiêu đề xanh đậm phía trên -->
+  <path d="M 50 88 Q 50 50 88 50 L 312 50 Q 350 50 350 88 L 350 116 L 50 116 Z" fill="url(#topBarGrad)" />
+  <line x1="50" y1="116" x2="350" y2="116" stroke="#061d33" stroke-width="2" />
+
+  <!-- Chữ CLB chính giữa sắc nét -->
+  <text x="200" y="246" font-family="system-ui, -apple-system, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="84" font-weight="900" fill="url(#rubyGrad)" text-anchor="middle" letter-spacing="4">
+    CLB
+  </text>
+</svg>
